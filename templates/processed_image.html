@@ -1,0 +1,29 @@
+{% extends 'home_page.html' %}
+
+{% block overrideCarousel %}
+
+{% endblock %}
+
+{% block image_loc %}
+    <div class="container-fluid mt-4">
+        <div class="row">
+            {% if modelInstance %}
+                <div class="col-6">
+                    <div class="container" style="justify-content: center; align-items: center;">
+                        <img src="{{ modelInstance.licenseImage.url }}" style="border-radius: 5% 5% 5% 5%; object-fit: cover; width: 85%; height: 85%;">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="container">
+                        {% if driverInfoInstance %}
+                            <h2 style="text-align: center;">License Plate found in database!</h2>
+                            <p style="margin-top: 25px; font-size: larger;" ><b>License No : {{driverInfoInstance.licenseNo}}<br>Name : {{driverInfoInstance.nameOfDriver}}<br>Age : {{driverInfoInstance.age}}</b></p>
+                        {% else %}
+                            <p style="margin-top: 25px; font-size: larger;"><b>No match found!</b></p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
